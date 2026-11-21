@@ -1,0 +1,415 @@
+@import "tailwindcss";
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+:root {
+  /* Dark Mode Default Variables */
+  --bg-main: #0F1012;
+  --bg-sidebar: #141518;
+  --bg-card: #18191D;
+  --bg-card-secondary: #141518;
+  --bg-card-hover: #1E1F24;
+  --bg-header: rgba(15, 16, 18, 0.95);
+  --bg-input: #101114;
+  --bg-modal: #18191D;
+  --bg-dropdown: #18191D;
+  
+  --border-subtle: #23252A;
+  --border-muted: #26282E;
+  --border-hover: #32353D;
+  --border-input: #2B2D34;
+  
+  --text-primary: #EDEDED;
+  --text-secondary: #8E929B;
+  --text-muted: #5F636E;
+  
+  --accent: #7C3AED;
+  --accent-hover: #6D28D9;
+  
+  --scrollbar-thumb: #26282E;
+  --scrollbar-thumb-hover: #363840;
+  
+  --card-shadow: none;
+  --modal-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  --dropdown-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="light"], .light {
+  /* Clean, Professional Light Theme Variables */
+  --bg-main: #F5F6FA;
+  --bg-sidebar: #FFFFFF;
+  --bg-card: #FFFFFF;
+  --bg-card-secondary: #F8F9FC;
+  --bg-card-hover: #F1F2F6;
+  --bg-header: rgba(255, 255, 255, 0.92);
+  --bg-input: #FFFFFF;
+  --bg-modal: #FFFFFF;
+  --bg-dropdown: #FFFFFF;
+  
+  --border-subtle: #E4E4E7;
+  --border-muted: #E2E8F0;
+  --border-hover: #CBD5E1;
+  --border-input: #E4E4E7;
+  
+  --text-primary: #18181B;
+  --text-secondary: #71717A;
+  --text-muted: #A1A1AA;
+  
+  --accent: #7C3AED;
+  --accent-hover: #6D28D9;
+  
+  --scrollbar-thumb: #D4D4D8;
+  --scrollbar-thumb-hover: #A1A1AA;
+  
+  --card-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.04), 0 1px 2px -1px rgba(0, 0, 0, 0.04);
+  --modal-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  --dropdown-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
+}
+
+@theme {
+  --color-main: var(--bg-main);
+  --color-sidebar: var(--bg-sidebar);
+  --color-card: var(--bg-card);
+  --color-card-hover: var(--bg-card-hover);
+  --color-border-subtle: var(--border-subtle);
+  --color-border-hover: var(--border-hover);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+}
+
+/* Subtle, restrained scrollbars like Linear/Raycast */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover);
+}
+
+body {
+  background-color: var(--bg-main);
+  color: var(--text-primary);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ==========================================================================
+   Light Mode Rules & Overrides for Complete Coverage
+   ========================================================================== */
+
+[data-theme="light"] body {
+  background-color: var(--bg-main);
+  color: var(--text-primary);
+}
+
+/* Background mappings */
+[data-theme="light"] .bg-\[\#0F1012\],
+[data-theme="light"] .bg-\[\#101114\] {
+  background-color: var(--bg-main) !important;
+}
+
+[data-theme="light"] .bg-\[\#141518\] {
+  background-color: var(--bg-sidebar) !important;
+}
+
+[data-theme="light"] .bg-\[\#18191D\] {
+  background-color: var(--bg-card) !important;
+  box-shadow: var(--card-shadow);
+}
+
+[data-theme="light"] .bg-\[\#18191D\]\/60,
+[data-theme="light"] .bg-\[\#18191D\]\/80,
+[data-theme="light"] .bg-\[\#18191D\]\/95 {
+  background-color: var(--bg-card-secondary) !important;
+}
+
+[data-theme="light"] .bg-\[\#1E1F24\],
+[data-theme="light"] .bg-\[\#1B1C22\],
+[data-theme="light"] .bg-\[\#202228\] {
+  background-color: var(--bg-card-secondary) !important;
+}
+
+/* Company Avatars and initial letter squares (Kanban, Table, Analytics) */
+[data-theme="light"] .bg-\[\#202227\] {
+  background-color: #F1F2F6 !important;
+  border-color: #E4E4E7 !important;
+  color: #18181B !important;
+}
+
+[data-theme="light"] .bg-\[\#202227\] * {
+  color: #18181B !important;
+}
+
+/* Secondary chips, job type badges, and status legend cards */
+[data-theme="light"] .bg-\[\#131417\] {
+  background-color: #F4F4F6 !important;
+  border-color: #E4E4E7 !important;
+  color: #18181B !important;
+}
+
+[data-theme="light"] .bg-\[\#131417\] span,
+[data-theme="light"] .bg-\[\#131417\] p {
+  color: #18181B !important;
+}
+
+/* Progress bar track in Analytics (Top Job Roles) */
+[data-theme="light"] .w-full.bg-\[\#131417\] {
+  background-color: #E4E4E7 !important;
+  border-color: #E4E4E7 !important;
+}
+
+/* Neutral badges, column counts, and small chips */
+[data-theme="light"] .bg-\[\#1C1E23\],
+[data-theme="light"] .bg-\[\#1E2025\] {
+  background-color: #F1F2F6 !important;
+  border-color: #E4E4E7 !important;
+  color: #71717A !important;
+}
+
+[data-theme="light"] .bg-\[\#1C1E23\] * {
+  color: #71717A !important;
+}
+
+/* User avatar box in sidebar and profile */
+[data-theme="light"] aside .bg-\[\#22242A\],
+[data-theme="light"] .w-6.h-6.bg-\[\#22242A\],
+[data-theme="light"] .w-7.h-7.bg-\[\#22242A\] {
+  background-color: #EDE9FE !important;
+  border-color: #DDD6FE !important;
+  color: #7C3AED !important;
+}
+
+/* Drag-over column styling */
+[data-theme="light"] .bg-\[\#17181D\] {
+  background-color: #EDE9FE !important;
+}
+
+/* Hover Backgrounds */
+[data-theme="light"] .hover\:bg-\[\#1E1F24\]:hover,
+[data-theme="light"] .hover\:bg-\[\#1A1B20\]:hover,
+[data-theme="light"] .hover\:bg-\[\#22242A\]:hover,
+[data-theme="light"] .hover\:bg-\[\#2B2D34\]:hover {
+  background-color: var(--bg-card-hover) !important;
+}
+
+/* Borders */
+[data-theme="light"] .border-\[\#23252A\],
+[data-theme="light"] .border-\[\#26282E\],
+[data-theme="light"] .border-\[\#2B2D34\],
+[data-theme="light"] .border-\[\#202227\],
+[data-theme="light"] .border-\[\#2E3038\],
+[data-theme="light"] .border-\[\#32353D\],
+[data-theme="light"] .border-\[\#363840\],
+[data-theme="light"] .border-\[\#3A3D46\] {
+  border-color: var(--border-subtle) !important;
+}
+
+[data-theme="light"] .border-\[\#23252A\]\/60 {
+  border-color: var(--border-subtle) !important;
+}
+
+[data-theme="light"] .divide-\[\#23252A\] > :not([hidden]) ~ :not([hidden]),
+[data-theme="light"] .divide-\[\#26282E\] > :not([hidden]) ~ :not([hidden]) {
+  border-color: var(--border-subtle) !important;
+}
+
+/* Text */
+[data-theme="light"] .text-\[\#EDEDED\],
+[data-theme="light"] .text-white {
+  color: var(--text-primary) !important;
+}
+
+[data-theme="light"] .text-\[\#8E929B\] {
+  color: var(--text-secondary) !important;
+}
+
+[data-theme="light"] .text-\[\#5F636E\] {
+  color: var(--text-muted) !important;
+}
+
+/* Purple Accent buttons & badges stay crisp white */
+[data-theme="light"] .bg-\[\#7C3AED\],
+[data-theme="light"] .bg-\[\#7C3AED\] .text-white,
+[data-theme="light"] button.bg-\[\#7C3AED\],
+[data-theme="light"] button.bg-\[\#7C3AED\] span,
+[data-theme="light"] .bg-purple-600,
+[data-theme="light"] .bg-purple-600 .text-white,
+[data-theme="light"] button.bg-purple-600 span {
+  color: #FFFFFF !important;
+}
+
+/* Active navigation item in light mode */
+[data-theme="light"] aside .bg-\[\#22242A\] {
+  background-color: #EDE9FE !important;
+  color: #7C3AED !important;
+}
+
+[data-theme="light"] aside .bg-\[\#22242A\] span,
+[data-theme="light"] aside .bg-\[\#22242A\] svg {
+  color: #7C3AED !important;
+}
+
+/* Secondary / Neutral buttons in Light Mode (Sign Out, Restore, Return to Dashboard, etc.) */
+[data-theme="light"] button.bg-\[\#22242A\],
+[data-theme="light"] .bg-\[\#22242A\]:is(button) {
+  background-color: #F1F2F6 !important;
+  border-color: #E4E4E7 !important;
+  color: #18181B !important;
+}
+
+[data-theme="light"] button.bg-\[\#22242A\]:hover,
+[data-theme="light"] .bg-\[\#22242A\]:is(button):hover {
+  background-color: #E4E4E7 !important;
+  color: #09090B !important;
+}
+
+[data-theme="light"] button.bg-\[\#22242A\] svg,
+[data-theme="light"] button.bg-\[\#22242A\] span {
+  color: #18181B !important;
+}
+
+/* Maintain hover danger style for Sign Out button in light mode */
+[data-theme="light"] button.bg-\[\#22242A\].hover\:bg-rose-500\/20:hover {
+  background-color: #FFE4E6 !important;
+  border-color: #FECDD3 !important;
+  color: #E11D48 !important;
+}
+
+[data-theme="light"] button.bg-\[\#22242A\].hover\:bg-rose-500\/20:hover svg,
+[data-theme="light"] button.bg-\[\#22242A\].hover\:bg-rose-500\/20:hover span {
+  color: #E11D48 !important;
+}
+
+/* Linear-style Segmented Filter Bar in Light Mode */
+[data-theme="light"] .inline-flex.bg-\[\#141518\] {
+  background-color: #F4F4F6 !important;
+  border-color: #E4E4E7 !important;
+}
+
+[data-theme="light"] .inline-flex button.bg-\[\#22242A\],
+[data-theme="light"] .inline-flex.bg-\[\#141518\] button.bg-\[\#22242A\] {
+  background-color: #FFFFFF !important;
+  border: 1px solid #E4E4E7 !important;
+  color: #18181B !important;
+  font-weight: 600 !important;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05) !important;
+}
+
+[data-theme="light"] .inline-flex button.bg-\[\#22242A\]:hover,
+[data-theme="light"] .inline-flex.bg-\[\#141518\] button.bg-\[\#22242A\]:hover {
+  background-color: #FFFFFF !important;
+  color: #09090B !important;
+}
+
+[data-theme="light"] .inline-flex.bg-\[\#141518\] button:not(.bg-\[\#22242A\]) {
+  color: #71717A !important;
+}
+
+[data-theme="light"] .inline-flex.bg-\[\#141518\] button:not(.bg-\[\#22242A\]):hover {
+  color: #18181B !important;
+  background-color: rgba(0, 0, 0, 0.04) !important;
+}
+
+/* Neutral badges in light mode */
+[data-theme="light"] span.bg-\[\#22242A\] {
+  background-color: #F1F2F6 !important;
+  border-color: #E4E4E7 !important;
+  color: #71717A !important;
+}
+
+/* Settings header icon and general w-8 / w-7 icons */
+[data-theme="light"] .w-8.h-8.bg-\[\#141518\] {
+  background-color: #EDE9FE !important;
+  border-color: #DDD6FE !important;
+  color: #7C3AED !important;
+}
+
+/* Hover text contrast in light mode */
+[data-theme="light"] .hover\:text-white:hover,
+[data-theme="light"] .hover\:text-\[\#EDEDED\]:hover {
+  color: var(--text-primary) !important;
+}
+
+/* Job role secondary typography in light mode */
+[data-theme="light"] .text-\[\#C5C8D0\] {
+  color: #52525B !important;
+}
+
+/* Action buttons and icons hover in light mode */
+[data-theme="light"] .hover\:bg-\[\#23252A\]:hover {
+  background-color: #F1F2F6 !important;
+  color: #18181B !important;
+}
+
+[data-theme="light"] .hover\:text-purple-300:hover,
+[data-theme="light"] .group:hover .group-hover\:text-purple-300 {
+  color: #7C3AED !important;
+}
+
+/* Status badge contrast in light mode */
+[data-theme="light"] .text-blue-300 {
+  color: #2563EB !important;
+}
+[data-theme="light"] .text-amber-300 {
+  color: #D97706 !important;
+}
+[data-theme="light"] .text-purple-300 {
+  color: #7C3AED !important;
+}
+[data-theme="light"] .text-emerald-300 {
+  color: #059669 !important;
+}
+[data-theme="light"] .text-zinc-400 {
+  color: #71717A !important;
+}
+
+/* Form inputs, date pickers & textareas */
+input[type="date"] {
+  color-scheme: dark;
+}
+
+[data-theme="light"] input[type="text"],
+[data-theme="light"] input[type="email"],
+[data-theme="light"] input[type="password"],
+[data-theme="light"] input[type="date"],
+[data-theme="light"] input[type="url"],
+[data-theme="light"] select,
+[data-theme="light"] textarea {
+  background-color: #FFFFFF !important;
+  color: #18181B !important;
+  border-color: var(--border-subtle) !important;
+}
+
+[data-theme="light"] input[type="date"] {
+  color-scheme: light;
+}
+
+[data-theme="light"] input::placeholder,
+[data-theme="light"] textarea::placeholder {
+  color: #A1A1AA !important;
+}
+
+/* Header blur backdrop in light mode */
+[data-theme="light"] header {
+  background-color: var(--bg-header) !important;
+  border-color: var(--border-subtle) !important;
+}
+
+/* Modals & Dialogs in light mode */
+[data-theme="light"] .fixed.inset-0.bg-black\/60,
+[data-theme="light"] .fixed.inset-0.bg-black\/70 {
+  background-color: rgba(15, 23, 42, 0.45) !important;
+}
